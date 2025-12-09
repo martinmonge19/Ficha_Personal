@@ -8,6 +8,19 @@ const LS_PROFILE = "martin_ficha_profile_v1";
 function qs(sel){ return document.querySelector(sel) }
 function qsa(sel){ return Array.from(document.querySelectorAll(sel)) }
 
+
+ const btn = document.getElementById("toggle-mode");
+
+    btn.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+
+        if (document.body.classList.contains("dark-mode")) {
+            btn.innerText = "Modo claro";
+        } else {
+            btn.innerText = "Modo oscuro";
+        }
+    });
+    
 function defaultProfile(){
   return {
     name: "Martin Mongelos",
@@ -214,7 +227,7 @@ function renderAll(){
   }
 }
 
-// profile photo upload handling
+
 function handleProfileUpload(){
   const input = document.getElementById("profilePhotoInput");
   input.addEventListener("change", (ev) => {
@@ -232,11 +245,14 @@ function handleProfileUpload(){
   });
 }
 
-// init
+
 (function init(){
-  // ensure default storage exists
+  
   const loaded = loadFromStorage();
-  // render UI
+  
   renderAll();
   handleProfileUpload();
 })();
+
+ 
+

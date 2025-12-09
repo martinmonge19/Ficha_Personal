@@ -3,7 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Ficha personal — Martin Mongelos</title>
+  <header>
+    <h1>Ficha personal  </h1>
+    <button id="toggle-mode">Modo oscuro</button>
+</header>
+
   <style>
     :root{
       --bg: #0a0a0a;
@@ -12,6 +16,27 @@
       --muted: #bbb;
       font-family: 'Poppins', sans-serif;
     }
+
+    /* ==== TEXTO SIEMPRE BLANCO EN MODO CLARO ==== */
+
+/* Si usás light-mode */
+body.light-mode, 
+body.light-mode * {
+    color: white !important;
+}
+
+/* Links modo claro manteniendo blanco */
+body.light-mode a {
+    color: white !important;
+}
+
+/* Titulos modo claro */
+body.light-mode h1,
+body.light-mode h2,
+body.light-mode h3 {
+    color: white !important;
+}
+
     *{box-sizing:border-box;margin:0;padding:0}
     body{
       background: var(--bg);
@@ -94,6 +119,33 @@
       color: var(--muted);
       font-size: 13px;
     }
+    
+  body {
+    background-color: #ffffff;
+    color: #000000;
+    transition: all 0.3s ease;
+}
+
+
+  body.dark-mode {
+    background-color: #0a0a0a;
+    color: #ffffff;
+}
+
+
+  #toggle-mode {
+    padding: 10px 15px;
+    border: none;
+    background-color: #293241;
+    color: #ffffff;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+  #toggle-mode:hover {
+    opacity: 0.8;
+}
+
   </style>
 </head>
 <body>
@@ -137,8 +189,28 @@
     </section>
 
     <footer>
-      <p>Ficha personal — Martin Mongelos</p>
+      <p>Ficha personal</p>
     </footer>
   </main>
+  <script>
+document.addEventListener("DOMContentLoaded", function() {
+
+    const toggleBtn = document.getElementById("toggle-mode");
+
+    toggleBtn.addEventListener("click", function() {
+
+        document.body.classList.toggle("dark-mode");
+
+        if (document.body.classList.contains("dark-mode")) {
+            toggleBtn.textContent = "Modo claro";
+        } else {
+            toggleBtn.textContent = "Modo oscuro";
+        }
+
+    });
+
+});
+</script>
+
 </body>
 </html>
